@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import Layout from '../common/Layout';
 import Home from '../../pages/Home';
+import Todo from '../../pages/Todo';
 
 const router: RouteObject[] = [
   {
@@ -10,6 +11,10 @@ const router: RouteObject[] = [
       {
         path: '',
         element: <Home />,
+      },
+      {
+        path: 'todo',
+        element: <Todo />,
       },
     ],
   },
