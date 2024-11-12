@@ -11,6 +11,7 @@ export type CreateTodoFormProps = {
 export type TodoContextType = {
   todos: Todos;
   addTodo: (data: TodoFormData) => void;
+  removeTodo: (todo: Todo) => void;
 };
 
 export type TodoProviderType = {
@@ -21,4 +22,9 @@ export type TodoProviderType = {
 
 export type TodoFormData = {
   name: string;
+};
+
+export type TodoItemProps = {
+  todo: Todo;
+  onRemove: (todo: Todo) => void;
 };

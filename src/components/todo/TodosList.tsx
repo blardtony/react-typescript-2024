@@ -1,15 +1,15 @@
 import { FC } from 'react';
 import useTodos from '../../hooks/useTodos';
+import TodoItem from './TodoItem';
 
 const TodosList: FC = () => {
-  const { todos } = useTodos();
+  const { todos, removeTodo } = useTodos();
+  console.log(todos);
   return (
-    <div>
-      <ul>
-        {todos.map((todo, key) => (
-          <li key={key}>{todo.name}</li>
-        ))}
-      </ul>
+    <div className="mt-4 grid gap-4">
+      {todos.map((todo, key) => (
+        <TodoItem key={key} todo={todo} onRemove={removeTodo} />
+      ))}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import {
+  Todo,
   TodoContextType,
   TodoFormData,
   TodoProviderType,
@@ -12,8 +13,13 @@ const TodoProvider = ({ children, todos, setTodos }: TodoProviderType) => {
     setTodos([...todos, { name: data.name }]);
   };
 
+  const removeTodo = (todo: Todo) => {
+    const newTodos = todos.filter((t) => t.name !== todo.name);
+    setTodos(newTodos);
+  };
+
   return (
-    <TodoContext.Provider value={{ todos, addTodo }}>
+    <TodoContext.Provider value={{ todos, addTodo, removeTodo }}>
       {children}
     </TodoContext.Provider>
   );
