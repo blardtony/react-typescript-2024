@@ -26,5 +26,10 @@ export type TodoFormData = {
 
 export type TodoItemProps = {
   todo: Todo;
-  onRemove: (todo: Todo) => void;
+};
+
+export type DeleteTodoModalProps = {
+  modalDeleteTodo: boolean;
+  setModalDeleteTodo: (modalDeleteTodo: boolean) => void;
+  onDelete: () => void;
 };
