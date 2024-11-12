@@ -20,7 +20,7 @@ const CreateTodo: FC = () => {
       >
         Create Todo
       </button>
-      <Modal visible={modalCreateTodo} onHide={() => setModalCreateTodo(false)}>
+      <Modal visible={modalCreateTodo} onClose={() => setModalCreateTodo(false)}>
         <h3 className="mb-3 text-xl font-bold">Create new todo</h3>
         <CreateTodoForm onSubmit={handleSubmit} />
       </Modal>

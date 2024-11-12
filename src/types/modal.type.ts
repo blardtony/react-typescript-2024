@@ -2,6 +2,6 @@ import { ReactNode } from 'react';
 
 export type ModalType = {
   visible: boolean;
-  onHide: () => void;
+  onClose: () => void;
   children: ReactNode;
 };
