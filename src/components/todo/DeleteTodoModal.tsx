@@ -11,6 +11,7 @@ const DeleteTodoModal: FC<DeleteTodoModalProps> = ({
     <Modal visible={modalDeleteTodo} onClose={() => setModalDeleteTodo(false)}>
       <h3 className="mb-3 text-xl font-bold">Delete todo</h3>
       <p>Are you sure you want to delete this todo?</p>
+      <div className="divider"></div>
       <div className="modal-action">
         <form method="dialog">
           <button className="btn btn-outline">Close</button>
