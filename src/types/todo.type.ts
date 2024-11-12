@@ -5,16 +5,20 @@ export type Todo = {
 export type Todos = Todo[];
 
 export type CreateTodoFormProps = {
-  onSubmit: (name: string) => void;
+  onSubmit: (data: TodoFormData) => void;
 };
 
 export type TodoContextType = {
   todos: Todos;
-  addTodo: (name: string) => void;
+  addTodo: (data: TodoFormData) => void;
 };
 
 export type TodoProviderType = {
   children: React.ReactNode;
   todos: Todos;
   setTodos: (todos: Todos) => void;
+};
+
+export type TodoFormData = {
+  name: string;
 };

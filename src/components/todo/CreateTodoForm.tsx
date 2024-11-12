@@ -1,34 +1,29 @@
-import { FC, useState } from 'react';
-import { CreateTodoFormProps } from '../../types/todo.type';
+import { FC } from 'react';
+import { CreateTodoFormProps, TodoFormData } from '../../types/todo.type';
+import { useForm } from 'react-hook-form';
 
 const CreateTodoForm: FC<CreateTodoFormProps> = ({ onSubmit }) => {
-  const [name, setName] = useState<string>('');
-  const [error, setError] = useState<string | null>(null);
+  const {
+    handleSubmit,
+    reset,
+    formState: { errors },
+    register,
+  } = useForm<TodoFormData>();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (!name.trim()) {
-      setError('Name is required');
-      return;
-    }
-
-    onSubmit(name);
-    setName('');
-    setError(null);
+  const onFormSubmit = (data: TodoFormData) => {
+    onSubmit(data);
+    reset();
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form onSubmit={handleSubmit(onFormSubmit)} className="flex flex-col gap-4">
       <input
-        className={`input input-bordered w-full ${error ? 'input-error' : ''}`}
+        className={`input input-bordered w-full ${errors.name ? 'input-error' : ''}`}
         type="text"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-        name="name"
         placeholder="Enter todo name"
+        {...register('name', { required: 'Name is required' })}
       />
-      {error && <p className="text-red-500">{error}</p>}
+      {errors.name && <p className="text-red-500">{errors.name.message}</p>}
       <button className="btn btn-primary" type="submit">
         Create todo
       </button>
