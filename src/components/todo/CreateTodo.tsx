@@ -1,16 +1,14 @@
 import { FC, useState } from 'react';
 import Modal from '../common/Modal.tsx';
 import CreateTodoForm from './CreateTodoForm.tsx';
-import { CreateTodoProps, Todo } from '../../types/todo.type.ts';
+import useTodos from '../../hooks/useTodos.ts';
 
-const CreateTodo: FC<CreateTodoProps> = ({ setTodos, todos }) => {
+const CreateTodo: FC = () => {
   const [modalCreateTodo, setModalCreateTodo] = useState(false);
+  const { addTodo } = useTodos();
 
   const handleSubmit = (name: string) => {
-    const newTodo: Todo = {
-      name,
-    };
-    setTodos([...todos, newTodo]);
+    addTodo(name);
     setModalCreateTodo(false);
   };
 

@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import { TodoListProps } from '../../types/todo.type';
+import useTodos from '../../hooks/useTodos';
 
-const TodosList: FC<TodoListProps> = ({ todos }) => {
+const TodosList: FC = () => {
+  const { todos } = useTodos();
   return (
     <div>
       <ul>
