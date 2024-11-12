@@ -1,5 +1,6 @@
 export type Todo = {
   name: string;
+  completed: boolean;
 };
 
 export type Todos = Todo[];
@@ -12,6 +13,7 @@ export type TodoContextType = {
   todos: Todos;
   addTodo: (data: TodoFormData) => void;
   removeTodo: (todo: Todo) => void;
+  toggleTodo: (todo: Todo) => void;
 };
 
 export type TodoProviderType = {

@@ -10,7 +10,7 @@ const TodoContext = createContext<TodoContextType | undefined>(undefined);
 
 const TodoProvider = ({ children, todos, setTodos }: TodoProviderType) => {
   const addTodo = (data: TodoFormData) => {
-    setTodos([...todos, { name: data.name }]);
+    setTodos([...todos, { name: data.name, completed: false }]);
   };
 
   const removeTodo = (todo: Todo) => {
@@ -18,8 +18,15 @@ const TodoProvider = ({ children, todos, setTodos }: TodoProviderType) => {
     setTodos(newTodos);
   };
 
+  const toggleTodo = (todo: Todo) => {
+    const newTodos = todos.map((t) =>
+      t.name === todo.name ? { ...t, completed: !t.completed } : t,
+    );
+    setTodos(newTodos);
+  };
+
   return (
-    <TodoContext.Provider value={{ todos, addTodo, removeTodo }}>
+    <TodoContext.Provider value={{ todos, addTodo, removeTodo, toggleTodo }}>
       {children}
     </TodoContext.Provider>
   );
