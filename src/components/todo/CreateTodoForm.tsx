@@ -23,7 +23,7 @@ const CreateTodoForm: FC<CreateTodoFormProps> = ({ onSubmit }) => {
         placeholder="Enter todo name"
         {...register('name', { required: 'Name is required' })}
       />
-      {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+      {errors.name && <p className="text-error">{errors.name.message}</p>}
       <button className="btn btn-primary" type="submit">
         Create todo
       </button>

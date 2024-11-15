@@ -30,7 +30,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
             onClick={() => setModalDeleteTodo(true)}
             className="btn ms-auto"
           >
-            <FaTrash size={'1rem'} className="text-red-600" />
+            <FaTrash size={'1rem'} className="text-error" />
           </button>
           <DeleteTodoModal
             setModalDeleteTodo={setModalDeleteTodo}
