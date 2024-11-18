@@ -4,7 +4,6 @@ import TodoItem from './TodoItem';
 
 const TodosList: FC = () => {
   const { todos } = useTodos();
-  console.log(todos);
   return (
     <div className="mt-4 grid gap-4">
       {todos.map((todo, key) => (
