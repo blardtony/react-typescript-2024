@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useMemo } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import {
   Todo,
@@ -32,8 +32,12 @@ const TodoProvider = ({ children, todos, setTodos }: TodoProviderType) => {
     setTodos(newTodos);
   };
 
+  const contextValue = useMemo(
+    () => ({ todos, addTodo, removeTodo, toggleTodo }),
+    [todos] // Dependencies array
+  );
   return (
-    <TodoContext.Provider value={{ todos, addTodo, removeTodo, toggleTodo }}>
+    <TodoContext.Provider value={contextValue}>
       {children}
     </TodoContext.Provider>
   );
